@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#251d32">
+  <meta name="description" content="Một hành trình hoa và lời chúc dịu dàng dành tặng ngày Phụ nữ Việt Nam 20/10.">
+  <title>Một khu vườn dành tặng bạn · 20/10</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/fonts/NotoSerif-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/NotoSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="./js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#presentation">Bỏ qua điều hướng</a>
+  <div class="ambient-grain" aria-hidden="true"></div>
+  <div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#cover" aria-label="Về trang mở đầu" data-go="0">
+      <span class="brand-mark" aria-hidden="true">✿</span>
+      <span class="brand-copy"><strong>GỬI NGÀN YÊU THƯƠNG</strong><small>VIETNAMESE WOMEN’S DAY · 20.10</small></span>
+    </a>
+    <div class="topbar-right">
+      <span class="date-chip"><span class="date-dot"></span> 20 tháng 10, 2026</span>
+      <button class="quiet-button" id="petalToggle" type="button" aria-pressed="true" title="Bật hoặc tắt cánh hoa bay"><span aria-hidden="true">✧</span><span class="quiet-label">Cánh hoa</span></button>
+    </div>
+  </header>
+
+  <main id="presentation" class="presentation" aria-label="Hành trình 20 tháng 10">
+    <!-- 01 / Cover -->
+    <section class="slide slide-cover is-active" id="cover" aria-labelledby="coverTitle" data-slide="0">
+      <canvas class="cover-garden" id="coverGarden" aria-hidden="true"></canvas>
+      <div class="cover-vignette" aria-hidden="true"></div>
+      <div class="cover-copy slide-inner">
+        <p class="eyebrow reveal-item"><span class="eyebrow-line"></span> Một món quà nhỏ, từ trái tim</p>
+        <h1 id="coverTitle" class="cover-title reveal-item">Có những điều<br>đẹp đẽ <em>như hoa.</em></h1>
+        <p class="cover-lede reveal-item">Và có những người khiến thế giới này dịu dàng hơn chỉ bằng sự hiện diện của mình.</p>
+        <div class="cover-actions reveal-item">
+          <button class="button button-light" type="button" data-next>Khám phá khu vườn <span aria-hidden="true">↗</span></button>
+          <span class="micro-note">Một hành trình nhỏ dành riêng cho bạn</span>
+        </div>
+      </div>
+      <div class="cover-stamp" aria-hidden="true"><span>20</span><i>tháng</i><span>10</span><small>YÊU THƯƠNG</small></div>
+      <div class="cover-bottom"><span>HUỲNH TRƯƠNG GIA HUY · 12 TIN</span><span>CUỘN CẢM XÚC BẰNG PHÍM MŨI TÊN <b>↓</b></span></div>
+    </section>
+
+    <!-- 02 / The garden -->
+    <section class="slide slide-garden" id="garden" aria-labelledby="gardenTitle" data-slide="1" aria-hidden="true" inert>
+      <div class="garden-atmosphere" aria-hidden="true"></div>
+      <div class="garden-heading slide-inner">
+        <p class="eyebrow reveal-item"><span class="eyebrow-line"></span> Chạm vào một điều dịu dàng</p>
+        <h2 id="gardenTitle" class="section-title reveal-item">Mỗi bông hoa<br><em>một lời chúc.</em></h2>
+        <p class="section-subtitle reveal-item">Trong khu vườn này, mỗi cánh hoa đều cất giữ một lời nhắn nhỏ. Hãy chọn một bông hoa nhé.</p>
+      </div>
+      <div class="flower-hotspots" aria-label="Chọn hoa để đọc lời chúc">
+        <button class="flower-spot spot-one" type="button" data-wish="0" aria-label="Hoa hồng: lời chúc bình yên" aria-pressed="false"><span>✿</span></button>
+        <button class="flower-spot spot-two" type="button" data-wish="1" aria-label="Hoa cúc: lời chúc niềm vui" aria-pressed="false"><span>✿</span></button>
+        <button class="flower-spot spot-three" type="button" data-wish="2" aria-label="Hoa đào: lời chúc ước mơ" aria-pressed="false"><span>✿</span></button>
+        <button class="flower-spot spot-four" type="button" data-wish="3" aria-label="Hoa tulip: lời chúc yêu thương" aria-pressed="false"><span>✿</span></button>
+        <button class="flower-spot spot-five" type="button" data-wish="4" aria-label="Hoa trắng: lời chúc dành cho chính bạn" aria-pressed="false"><span>✿</span></button>
+      </div>
+      <aside class="wish-bubble" id="wishBubble" aria-live="polite" aria-atomic="true">
+        <span class="wish-bubble-mark" aria-hidden="true">✧</span>
+        <div><span class="wish-label" id="wishLabel">MỘT LỜI NHẮN NHỎ</span><p id="wishText">Chọn một bông hoa để nhận lời chúc đầu tiên.</p></div>
+        <button class="wish-close" id="wishClose" type="button" aria-label="Đóng lời chúc">×</button>
+      </aside>
+      <div class="garden-caption"><span>✧</span> Khu vườn sẽ luôn nở hoa khi ta trao nhau điều tốt đẹp <span>✧</span></div>
+    </section>
+
+    <!-- 03 / Wishes -->
+    <section class="slide slide-wishes" id="wishes" aria-labelledby="wishesTitle" data-slide="2" aria-hidden="true" inert>
+      <div class="wishes-backdrop" aria-hidden="true"><span class="outline-flower outline-a">✿</span><span class="outline-flower outline-b">✾</span><span class="outline-flower outline-c">❀</span></div>
+      <div class="slide-inner wishes-inner">
+        <div class="wishes-intro">
+          <p class="eyebrow reveal-item"><span class="eyebrow-line"></span> Những lời chúc được gói bằng yêu thương</p>
+          <h2 id="wishesTitle" class="section-title reveal-item">Điều đẹp nhất<br>là <em>bạn hạnh phúc.</em></h2>
+          <p class="section-subtitle reveal-item">Không cần điều gì quá lớn lao. Mong những điều bình thường mỗi ngày cũng đủ làm bạn mỉm cười.</p>
+          <button class="button button-dark reveal-item" id="randomWish" type="button">Gửi mình một lời chúc <span aria-hidden="true">✧</span></button>
+          <p class="random-wish" id="randomWishText" aria-live="polite">“Mong bạn luôn được yêu thương theo cách khiến trái tim mình thấy bình yên.”</p>
+        </div>
+        <div class="wish-grid">
+          <button class="wish-card wish-card-rose reveal-item" type="button" data-message="mother">
+            <span class="wish-card-icon" aria-hidden="true">♡</span><span class="wish-card-kicker">GỬI MẸ</span><strong>Cho người<br>luôn chở che</strong><span class="wish-card-foot">Đọc lời chúc <b>↗</b></span>
+          </button>
+          <button class="wish-card wish-card-cream reveal-item" type="button" data-message="teacher">
+            <span class="wish-card-icon" aria-hidden="true">✎</span><span class="wish-card-kicker">GỬI CÔ</span><strong>Cho người<br>gieo mầm tri thức</strong><span class="wish-card-foot">Đọc lời chúc <b>↗</b></span>
+          </button>
+          <button class="wish-card wish-card-lilac reveal-item" type="button" data-message="friend">
+            <span class="wish-card-icon" aria-hidden="true">✿</span><span class="wish-card-kicker">GỬI BẠN</span><strong>Cho người<br>làm ngày vui hơn</strong><span class="wish-card-foot">Đọc lời chúc <b>↗</b></span>
+          </button>
+          <button class="wish-card wish-card-green reveal-item" type="button" data-message="self">
+            <span class="wish-card-icon" aria-hidden="true">☼</span><span class="wish-card-kicker">GỬI CHÍNH MÌNH</span><strong>Cho một người<br>cũng cần được thương</strong><span class="wish-card-foot">Đọc lời chúc <b>↗</b></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 / Album -->
+    <section class="slide slide-album" id="album" aria-labelledby="albumTitle" data-slide="3" aria-hidden="true" inert>
+      <div class="album-glow" aria-hidden="true"></div>
+      <div class="slide-inner album-inner">
+        <div class="album-copy">
+          <p class="eyebrow reveal-item"><span class="eyebrow-line"></span> Lưu lại những điều đáng nhớ</p>
+          <h2 id="albumTitle" class="section-title reveal-item">Mỗi khoảnh khắc<br>đều có <em>một sắc hoa.</em></h2>
+          <p class="section-subtitle reveal-item">Một góc nhỏ để cất giữ những nụ cười, kỷ niệm và người khiến trái tim mình ấm áp.</p>
+          <div class="album-controls reveal-item">
+            <button class="button button-dark" id="editPhotos" type="button">Thay ảnh của bạn <span aria-hidden="true">＋</span></button>
+            <button class="text-button" id="resetPhotos" type="button">Khôi phục ảnh mẫu ↻</button>
+            <p class="privacy-note"><span aria-hidden="true">⌁</span> Ảnh được lưu trên trình duyệt của thiết bị này, không tự tải lên mạng.</p>
+          </div>
+        </div>
+        <div class="memory-gallery" id="memoryGallery">
+          <figure class="memory-card memory-card-one reveal-item">
+            <div class="memory-photo"><img src="./assets/memory-rose.svg" alt="Minh họa một đóa hồng hồng trong nắng sớm" data-memory-img="0"><label class="photo-edit" for="photoInput0">Đổi ảnh</label><input id="photoInput0" class="photo-input" type="file" accept="image/*" data-photo-index="0"></div>
+            <figcaption><span class="memory-number">01 / ALWAYS</span><strong>Những điều dịu dàng</strong><small>đôi khi ở ngay bên cạnh</small></figcaption>
+          </figure>
+          <figure class="memory-card memory-card-two reveal-item">
+            <div class="memory-photo"><img src="./assets/memory-meadow.svg" alt="Minh họa đồng hoa nhỏ dưới bầu trời chiều" data-memory-img="1"><label class="photo-edit" for="photoInput1">Đổi ảnh</label><input id="photoInput1" class="photo-input" type="file" accept="image/*" data-photo-index="1"></div>
+            <figcaption><span class="memory-number">02 / BLOOM</span><strong>Những lần mỉm cười</strong><small>làm ngày thường thành đặc biệt</small></figcaption>
+          </figure>
+          <figure class="memory-card memory-card-three reveal-item">
+            <div class="memory-photo"><img src="./assets/memory-tulip.svg" alt="Minh họa những bông tulip màu kem và hồng" data-memory-img="2"><label class="photo-edit" for="photoInput2">Đổi ảnh</label><input id="photoInput2" class="photo-input" type="file" accept="image/*" data-photo-index="2"></div>
+            <figcaption><span class="memory-number">03 / TOGETHER</span><strong>Và những người thương</strong><small>khiến cuộc sống nở hoa</small></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 / Letter -->
+    <section class="slide slide-letter" id="letter" aria-labelledby="letterTitle" data-slide="4" aria-hidden="true" inert>
+      <canvas class="letter-garden" id="letterGarden" aria-hidden="true"></canvas>
+      <div class="letter-overlay" aria-hidden="true"></div>
+      <div class="slide-inner letter-inner">
+        <div class="letter-intro">
+          <p class="eyebrow reveal-item"><span class="eyebrow-line"></span> Trước khi hành trình khép lại</p>
+          <h2 id="letterTitle" class="section-title reveal-item">Một tấm thiệp,<br><em>ngàn điều muốn nói.</em></h2>
+          <p class="section-subtitle reveal-item">Có những lời chúc nói thành lời vẫn chưa đủ. Vậy nên, mình gửi bạn một tấm thiệp nhỏ.</p>
+          <div class="letter-actions reveal-item"><button class="button button-light" id="openLetter" type="button">Mở tấm thiệp <span aria-hidden="true">♡</span></button><button class="text-button text-button-light" id="customizeLetter" type="button">Viết lời chúc riêng ↗</button></div>
+        </div>
+        <div class="letter-stage">
+          <div class="envelope" id="envelope" aria-label="Phong bì thiệp chúc mừng">
+            <div class="envelope-back"></div><div class="envelope-paper" id="letterPaper" aria-live="polite"><div class="paper-flower" aria-hidden="true">❀</div><span class="paper-kicker">GỬI NGƯỜI PHỤ NỮ TUYỆT VỜI</span><h3 id="letterGreeting">Chúc bạn một ngày 20/10 thật đẹp!</h3><p id="letterBody">Mong bạn luôn được yêu thương, được lắng nghe và được là chính mình. Chúc bạn đủ sức mạnh để đi về phía ước mơ, đủ bình yên để tận hưởng những điều giản dị và luôn nhớ rằng sự hiện diện của bạn làm thế giới này đẹp hơn rất nhiều.</p><div class="paper-signoff">Thân mến,<strong id="letterSignature">Huỳnh Trương Gia Huy · 12 Tin</strong></div></div>
+            <div class="envelope-flap"></div><div class="envelope-front"><span>Gửi bạn, bằng tất cả sự trân trọng</span><b>✿</b></div>
+          </div>
+          <p class="letter-caption" id="letterCaption">Một chút yêu thương, được gói ghém cẩn thận.</p>
+        </div>
+      </div>
+      <form class="letter-editor" id="letterEditor" hidden>
+        <button type="button" class="editor-close" id="closeEditor" aria-label="Đóng trình chỉnh sửa">×</button>
+        <p class="editor-kicker">TẠO TẤM THIỆP CỦA BẠN</p><h3>Viết điều bạn muốn gửi.</h3>
+        <label for="recipientInput">Tên người nhận</label><input id="recipientInput" maxlength="80" value="bạn" autocomplete="off">
+        <label for="greetingInput">Lời mở đầu</label><input id="greetingInput" maxlength="100" value="Chúc bạn một ngày 20/10 thật đẹp!">
+        <label for="bodyInput">Nội dung lời chúc</label><textarea id="bodyInput" rows="4" maxlength="650">Mong bạn luôn được yêu thương, được lắng nghe và được là chính mình. Chúc bạn đủ sức mạnh để đi về phía ước mơ, đủ bình yên để tận hưởng những điều giản dị và luôn nhớ rằng sự hiện diện của bạn làm thế giới này đẹp hơn rất nhiều.</textarea>
+        <label for="signatureInput">Chữ ký</label><input id="signatureInput" maxlength="100" value="Huỳnh Trương Gia Huy · 12 Tin">
+        <div class="editor-actions"><button class="button button-dark" type="submit">Lưu tấm thiệp ✓</button><button class="text-button" id="cancelEditor" type="button">Hủy bỏ</button></div>
+        <small>Lời chúc được lưu trong trình duyệt hiện tại.</small>
+      </form>
+      <footer class="creator-credit"><span>ĐƯỢC TẠO BẰNG SỰ TRÂN TRỌNG</span><strong>Huỳnh Trương Gia Huy <i>·</i> 12 Tin</strong><small>Ngày Phụ nữ Việt Nam · 20.10.2026</small></footer>
+    </section>
+  </main>
+
+  <nav class="deck-nav" aria-label="Điều hướng các cảnh">
+    <div class="deck-progress"><span id="progressFill"></span></div>
+    <div class="deck-nav-bottom">
+      <div class="scene-count"><strong id="currentScene">01</strong><span>/</span><span>05</span><span class="count-label">CẢNH</span></div>
+      <div class="scene-dots" id="sceneDots" aria-label="Chọn cảnh">
+        <button class="scene-dot is-active" type="button" data-go="0" aria-label="Cảnh 1: Mở đầu" aria-current="step"></button>
+        <button class="scene-dot" type="button" data-go="1" aria-label="Cảnh 2: Vườn hoa"></button>
+        <button class="scene-dot" type="button" data-go="2" aria-label="Cảnh 3: Lời chúc"></button>
+        <button class="scene-dot" type="button" data-go="3" aria-label="Cảnh 4: Album"></button>
+        <button class="scene-dot" type="button" data-go="4" aria-label="Cảnh 5: Tấm thiệp"></button>
+      </div>
+      <div class="nav-arrows"><button id="previousSlide" type="button" aria-label="Cảnh trước" disabled>←</button><button id="nextSlide" type="button" aria-label="Cảnh tiếp theo">→</button></div>
+    </div>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="message-dialog" id="messageDialog" aria-labelledby="messageDialogTitle"><button class="dialog-close" id="closeMessageDialog" type="button" aria-label="Đóng">×</button><span class="dialog-flower" aria-hidden="true">✿</span><p class="dialog-kicker" id="messageDialogKicker">MỘT LỜI CHÚC</p><h2 id="messageDialogTitle">Gửi bạn</h2><p id="messageDialogBody"></p><span class="dialog-signature">Với thật nhiều yêu thương · 20/10</span></dialog>
+  <input type="file" id="hiddenPhotoInput" accept="image/*" hidden>
+</body>
+</html>
